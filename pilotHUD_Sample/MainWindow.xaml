@@ -7,13 +7,13 @@
         xmlns:pilotHUD="clr-namespace:pilotHUD;assembly=pilotHUD"
         mc:Ignorable="d"
         Title="HUD" Height="800" Width="1200">
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition/>
-      <ColumnDefinition Width="Auto"/>
-    </Grid.ColumnDefinitions>
-    <pilotHUD:hudControl RollAngle="{Binding ElementName=Slider_Roll,Path=Value}" 
-                         PitchAngle="{Binding ElementName=Slider_Pitch,Path=Value}" 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <pilotHUD:hudControl RollAngle="{Binding ElementName=Slider_Roll,Path=Value}"
+                         PitchAngle="{Binding ElementName=Slider_Pitch,Path=Value}"
                          YawAngle="{Binding ElementName=Slider_Yaw,Path=Value}"
                          ClimbRate="{Binding ElementName=Slider_ClimbRate,Path=Value}"
                          MaxClimbRateArrowMag="{Binding ElementName=Slider_MaxClimbArrMag,Path=Value}"
@@ -21,48 +21,63 @@
                          Mach="{Binding ElementName=Slider_Mach,Path=Value}"
                          G_Load="{Binding ElementName=Slider_G,Path=Value}"
                          Alpha="{Binding ElementName=Slider_Alpha,Path=Value}"
-                         Beta="{Binding ElementName=Slider_Beta,Path=Value}"/>
-    <Border Grid.Column="1">
-      <Grid Width="300" Margin="5">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="70"/>
-          <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition Height="40"/>
-          <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Yaw" VerticalAlignment="Center"/>
-        <Slider Name="Slider_Yaw" Grid.Column="1" Minimum="-180" Maximum="180" Value="0" TickFrequency="20" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Pitch" VerticalAlignment="Center" Grid.Row="1"/>
-        <Slider Name="Slider_Pitch" Grid.Column="1" Grid.Row="1" Minimum="-90" Maximum="90" Value="0" TickFrequency="10" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Roll" VerticalAlignment="Center" Grid.Row="2"/>
-        <Slider Name="Slider_Roll" Grid.Column="1" Grid.Row="2" Minimum="-180" Maximum="180" Value="0" TickFrequency="20" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Climb rate" VerticalAlignment="Center" Grid.Row="3"/>
-        <Slider Name="Slider_ClimbRate" Grid.Column="1" Grid.Row="3" Minimum="-100" Maximum="100" Value="0" TickFrequency="10" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Max Arr Mag" VerticalAlignment="Center" Grid.Row="4"/>
-        <Slider Name="Slider_MaxClimbArrMag" Grid.Column="1" Grid.Row="4" Minimum="0" Maximum="100" Value="50" TickFrequency="5" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Speed (m/s)" VerticalAlignment="Center" Grid.Row="5"/>
-        <Slider Name="Slider_SpeedMs" Grid.Column="1" Grid.Row="5" Minimum="0" Maximum="700" Value="0" TickFrequency="35" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Mach" VerticalAlignment="Center" Grid.Row="6"/>
-        <Slider Name="Slider_Mach" Grid.Column="1" Grid.Row="6" Minimum="0" Maximum="2" Value="0" TickFrequency="0.1" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="G" VerticalAlignment="Center" Grid.Row="7"/>
-        <Slider Name="Slider_G" Grid.Column="1" Grid.Row="7" Minimum="-10" Maximum="10" Value="0" TickFrequency="1" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Alpha" VerticalAlignment="Center" Grid.Row="8"/>
-        <Slider Name="Slider_Alpha" Grid.Column="1" Grid.Row="8" Minimum="-45" Maximum="45" Value="0" TickFrequency="9" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-        <TextBlock Text="Beta" VerticalAlignment="Center" Grid.Row="9"/>
-        <Slider Name="Slider_Beta" Grid.Column="1" Grid.Row="9" Minimum="-45" Maximum="45" Value="0" TickFrequency="9" TickPlacement="BottomRight"  VerticalAlignment="Center"/>
-      </Grid>
-    </Border>
-  </Grid>
-
+                         Beta="{Binding ElementName=Slider_Beta,Path=Value}"
+                         ClimbRateEnabled="{Binding ElementName=Checkbox_Climb, Path=IsChecked}"
+                         MachEnabled="{Binding ElementName=Checkbox_M, Path=IsChecked}"
+                         G_LoadEnabled="{Binding ElementName=Checkbox_G, Path=IsChecked}"
+                         SpeedMsEnabled="{Binding ElementName=Checkbox_Speed, Path=IsChecked}" />
+        <Border Grid.Column="1">
+            <Grid Width="300" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Yaw" VerticalAlignment="Center" />
+                <Slider Name="Slider_Yaw" Grid.Column="1" Minimum="-180" Maximum="180" Value="0" TickFrequency="20" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Pitch" VerticalAlignment="Center" Grid.Row="1" />
+                <Slider Name="Slider_Pitch" Grid.Column="1" Grid.Row="1" Minimum="-90" Maximum="90" Value="0" TickFrequency="10" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Roll" VerticalAlignment="Center" Grid.Row="2" />
+                <Slider Name="Slider_Roll" Grid.Column="1" Grid.Row="2" Minimum="-180" Maximum="180" Value="0" TickFrequency="20" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Climb rate" VerticalAlignment="Center" Grid.Row="3" />
+                <Slider Name="Slider_ClimbRate" Grid.Column="1" Grid.Row="3" Minimum="-100" Maximum="100" Value="0" TickFrequency="10" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Max Arr Mag" VerticalAlignment="Center" Grid.Row="4" />
+                <Slider Name="Slider_MaxClimbArrMag" Grid.Column="1" Grid.Row="4" Minimum="0" Maximum="100" Value="50" TickFrequency="5" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Speed (m/s)" VerticalAlignment="Center" Grid.Row="5" />
+                <Slider Name="Slider_SpeedMs" Grid.Column="1" Grid.Row="5" Minimum="0" Maximum="700" Value="0" TickFrequency="35" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Mach" VerticalAlignment="Center" Grid.Row="6" />
+                <Slider Name="Slider_Mach" Grid.Column="1" Grid.Row="6" Minimum="0" Maximum="2" Value="0" TickFrequency="0.1" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="G" VerticalAlignment="Center" Grid.Row="7" />
+                <Slider Name="Slider_G" Grid.Column="1" Grid.Row="7" Minimum="-10" Maximum="10" Value="0" TickFrequency="1" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Alpha" VerticalAlignment="Center" Grid.Row="8" />
+                <Slider Name="Slider_Alpha" Grid.Column="1" Grid.Row="8" Minimum="-45" Maximum="45" Value="0" TickFrequency="9" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="Beta" VerticalAlignment="Center" Grid.Row="9" />
+                <Slider Name="Slider_Beta" Grid.Column="1" Grid.Row="9" Minimum="-45" Maximum="45" Value="0" TickFrequency="9" TickPlacement="BottomRight"  VerticalAlignment="Center" />
+                <TextBlock Text="G Enabled" VerticalAlignment="Center" Grid.Row="10" />
+                <CheckBox Name="Checkbox_G" VerticalAlignment="Center" Grid.Row="10" Grid.Column="1"/>
+                <TextBlock Text="M Enabled" VerticalAlignment="Center" Grid.Row="11" />
+                <CheckBox Name="Checkbox_M" VerticalAlignment="Center" Grid.Row="11" Grid.Column="1"/>
+                <TextBlock Text="Speed Enabled" VerticalAlignment="Center" Grid.Row="12" />
+                <CheckBox Name="Checkbox_Speed" VerticalAlignment="Center" Grid.Row="12" Grid.Column="1"/>
+                <TextBlock Text="Climb Enabled" VerticalAlignment="Center" Grid.Row="13" />
+                <CheckBox Name="Checkbox_Climb" VerticalAlignment="Center" Grid.Row="13" Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>
