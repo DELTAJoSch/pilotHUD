@@ -17,7 +17,7 @@
                          YawAngle="{Binding ElementName=Slider_Yaw,Path=Value}"
                          ClimbRate="{Binding ElementName=Slider_ClimbRate,Path=Value}"
                          MaxClimbRateArrowMag="{Binding ElementName=Slider_MaxClimbArrMag,Path=Value}"
-                         SpeedMs="{Binding ElementName=Slider_SpeedMs,Path=Value}"
+                         SpeedKt="{Binding ElementName=Slider_SpeedMs,Path=Value}"
                          Mach="{Binding ElementName=Slider_Mach,Path=Value}"
                          G_Load="{Binding ElementName=Slider_G,Path=Value}"
                          Alpha="{Binding ElementName=Slider_Alpha,Path=Value}"
@@ -25,7 +25,7 @@
                          ClimbRateEnabled="{Binding ElementName=Checkbox_Climb, Path=IsChecked}"
                          MachEnabled="{Binding ElementName=Checkbox_M, Path=IsChecked}"
                          G_LoadEnabled="{Binding ElementName=Checkbox_G, Path=IsChecked}"
-                         SpeedMsEnabled="{Binding ElementName=Checkbox_Speed, Path=IsChecked}" />
+                         SpeedKtEnabled="{Binding ElementName=Checkbox_Speed, Path=IsChecked}" />
         <Border Grid.Column="1">
             <Grid Width="300" Margin="5">
                 <Grid.ColumnDefinitions>

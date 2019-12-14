@@ -119,23 +119,23 @@ namespace pilotHUD
         public static readonly DependencyProperty G_LoadEnabledProperty =
                 DependencyProperty.Register("G_LoadEnabled", typeof(bool), typeof(hudControl), new FrameworkPropertyMetadata((bool)false, GestureChangedCallback));
 
-        public double SpeedMs
+        public double SpeedKt
         {
-            get { return (double)GetValue(SpeedMsProperty); }
-            set { SetValue(SpeedMsProperty, value); }
+            get { return (double)GetValue(SpeedKtProperty); }
+            set { SetValue(SpeedKtProperty, value); }
         }
 
-        public static readonly DependencyProperty SpeedMsProperty =
-            DependencyProperty.Register("SpeedMs", typeof(double), typeof(hudControl), new FrameworkPropertyMetadata((double)0, GestureChangedCallback));
+        public static readonly DependencyProperty SpeedKtProperty =
+            DependencyProperty.Register("SpeedKt", typeof(double), typeof(hudControl), new FrameworkPropertyMetadata((double)0, GestureChangedCallback));
 
-        public bool SpeedMsEnabled
+        public bool SpeedKtEnabled
         {
-            get { return (bool)GetValue(SpeedMsEnabledProperty); }
-            set { SetValue(SpeedMsEnabledProperty, value); }
+            get { return (bool)GetValue(SpeedKtEnabledProperty); }
+            set { SetValue(SpeedKtEnabledProperty, value); }
         }
 
-        public static readonly DependencyProperty SpeedMsEnabledProperty =
-                    DependencyProperty.Register("SpeedMsEnabled", typeof(bool), typeof(hudControl), new FrameworkPropertyMetadata((bool)false, GestureChangedCallback));
+        public static readonly DependencyProperty SpeedKtEnabledProperty =
+                    DependencyProperty.Register("SpeedKtEnabled", typeof(bool), typeof(hudControl), new FrameworkPropertyMetadata((bool)false, GestureChangedCallback));
 
         public double Alpha
         {
@@ -594,7 +594,7 @@ namespace pilotHUD
         {
             var txtBlk = new BorderTextLabel();
             txtBlk.Stroke = Brushes.White;
-            txtBlk.Text = "VERT\n" + climbRate.ToString("+0.0;-0.0;0.0");
+            txtBlk.Text = "VERT\n" + climbRate.ToString("+0.0;-0.0;0.0") + " ft/min";
             txtBlk.Foreground = Brushes.White;
             txtBlk.FontSize = 20;
             Canvas.SetTop(txtBlk, -25);
@@ -645,7 +645,7 @@ namespace pilotHUD
             Canvas_RightHUD.Children.Add(climbMagnitude);
         }
 
-        private void DrawSpeedAndG(double speed_ms, double mach, double gLoad)
+        private void DrawSpeedAndG(double speed_kt, double mach, double gLoad)
         {
             var txtBlkGM = new BorderTextLabel();
             txtBlkGM.Stroke = Brushes.White;
@@ -662,11 +662,11 @@ namespace pilotHUD
             Canvas.SetLeft(txtBlkGM, -50);
             Canvas_LeftHUD.Children.Add(txtBlkGM);
 
-            if (SpeedMsEnabled)
+            if (SpeedKtEnabled)
             {
                 var txtBlkSpd = new BorderTextLabel();
                 txtBlkSpd.Stroke = Brushes.White;
-                txtBlkSpd.Text = "SPEED\nm/s    " + speed_ms.ToString("0");
+                txtBlkSpd.Text = "SPEED\nkt    " + speed_kt.ToString("0");
                 txtBlkSpd.Foreground = Brushes.White;
                 txtBlkSpd.FontSize = 16;
                 Canvas.SetTop(txtBlkSpd, -200);
@@ -812,7 +812,7 @@ namespace pilotHUD
             if (ClimbRateEnabled)
                 DrawClimbRate(ClimbRate);
 
-            DrawSpeedAndG(SpeedMs, Mach, G_Load);
+            DrawSpeedAndG(SpeedKt, Mach, G_Load);
             DrawAircraft();
             DrawFlightPathMarker(Alpha, Beta);
             DrawAlphaBeta(Alpha, Beta);
